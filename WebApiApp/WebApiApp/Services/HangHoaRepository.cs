@@ -70,5 +70,29 @@ namespace WebApiApp.Services
             item.MaHH = hangHoa.MaHH;
             return item;
         }
+
+        public void Edit(HangHoaModel item)
+        {
+            var edit = _context.HangHoas.SingleOrDefault(it => it.MaHH == item.MaHH);
+            if(edit != null)
+            {
+                edit.TenHH = item.TenHH;
+                edit.MaLoaiHH = item.MaLoaiHH;
+                edit.GiamGia = item.GiamGia;
+                edit.DonGia = item.DonGia;
+                _context.SaveChanges();
+
+            }
+        }
+        public void Delete(Guid id)
+        {
+            var del = _context.HangHoas.SingleOrDefault(it => it.MaHH == id);
+            if (del != null)
+            {
+                _context.Remove(del);
+                _context.SaveChanges();
+
+            }
+        }
     }
 }
