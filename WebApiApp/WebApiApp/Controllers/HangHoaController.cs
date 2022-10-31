@@ -17,6 +17,8 @@ namespace WebApiApp.Controllers
         /// </summary>
         //--rekr r ere rekj rkejrk jrke r
         ///ewuweu oewueo wuoe uwoeuwoue
+        /*cuong test xunf dột dữ liệu*/
+
         private readonly IHangHoaRepository _hangHoaRepository;
         public  HangHoaController(IHangHoaRepository hangHoaRepository)
         {
