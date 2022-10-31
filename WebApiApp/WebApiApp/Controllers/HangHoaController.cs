@@ -12,6 +12,9 @@ namespace WebApiApp.Controllers
     [ApiController]
     public class HangHoaController : ControllerBase
     {
+        /// <summary>
+        ///  Day la chuc nang quan ly hang hoa API
+        /// </summary>
         private readonly IHangHoaRepository _hangHoaRepository;
         public  HangHoaController(IHangHoaRepository hangHoaRepository)
         {
