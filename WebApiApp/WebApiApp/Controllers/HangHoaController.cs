@@ -24,6 +24,7 @@ namespace WebApiApp.Controllers
         {
             _hangHoaRepository = hangHoaRepository;
             /// test hàng hóa
+            /// tetetetete djdjdskjdkjsdk j
         }
 
         [HttpGet("{id}/GetById")]
