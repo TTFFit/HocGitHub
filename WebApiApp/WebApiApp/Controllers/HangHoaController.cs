@@ -15,6 +15,7 @@ namespace WebApiApp.Controllers
         /// <summary>
         ///  Day la chuc nang quan ly hang hoa API
         /// </summary>
+        /*cuong test xunf dột dữ liệu*/
         private readonly IHangHoaRepository _hangHoaRepository;
         public  HangHoaController(IHangHoaRepository hangHoaRepository)
         {
