@@ -16,6 +16,7 @@ namespace WebApiApp.Controllers
         public  HangHoaController(IHangHoaRepository hangHoaRepository)
         {
             _hangHoaRepository = hangHoaRepository;
+            /// test hàng hóa
         }
 
         [HttpGet("{id}/GetById")]
@@ -61,50 +62,44 @@ namespace WebApiApp.Controllers
             
         }
 
-        //[HttpPut("{id}")]
-        //public IActionResult Edit(string id, HangHoa hangHoaEdit)
-        //{
-        //    try
-        //    {
-        //        var hangHoa = hangHoas.SingleOrDefault(it => it.MaHangHoa == Guid.Parse(id));
-        //        if (hangHoa == null)
-        //        {
-        //            return NotFound();
-        //        }
-        //        if (id != hangHoa.MaHangHoa.ToString())
-        //        {
-        //            return BadRequest();
-        //        }
-        //        //Update
-        //        hangHoa.TenHangHoa = hangHoaEdit.TenHangHoa;
-        //        hangHoa.DonGia = hangHoaEdit.DonGia;
-        //        return Ok();
+        [HttpPut("{id}")]
+        public IActionResult Edit(string id, HangHoaModel hangHoa)
+        {
+            try
+            {
+                if (id != hangHoa.MaHH.ToString())
+                {
+                    return BadRequest();
+                }
+                try
+                {
+                    _hangHoaRepository.Edit(hangHoa);
+                    return NoContent();
+                }
+                catch
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError);
+                }
 
-        //    }
-        //    catch
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
 
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(string id)
-        //{
-        //    try
-        //    {
-        //        var hangHoa = hangHoas.SingleOrDefault(it => it.MaHangHoa == Guid.Parse(id));
-        //        if (hangHoa == null)
-        //        {
-        //            return NotFound();
-        //        }
-        //        hangHoas.Remove(hangHoa);
-        //        return Ok();
-
-        //    }
-        //    catch
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _hangHoaRepository.Delete(id);
+                return Ok();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
     }
 }
